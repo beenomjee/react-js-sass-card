@@ -1,0 +1,141 @@
+@import "../../styles";
+
+.container {
+  @include center();
+  min-height: 100vh;
+  & > .center {
+    width: min(400px, 95vw);
+    & > .card {
+      background: linear-gradient(160deg, #8e31f4 0%, #4546f7 100%);
+      width: 100%;
+      border-radius: 15px;
+      min-height: 220px;
+      padding: 30px;
+      position: relative;
+      z-index: -1;
+      overflow: hidden;
+      @include flex(column, stretch, space-between);
+
+      @include query(400px) {
+        padding: 30px 20px;
+      }
+
+      &::before,
+      &::after {
+        content: "";
+        display: block;
+        aspect-ratio: 1;
+        background: rgba(0, 0, 0, 0.1);
+        border-radius: 50%;
+        position: absolute;
+      }
+
+      &::before {
+        width: 50rem;
+        right: 0;
+        top: 0;
+        transform: translate(45%, -80%);
+
+        @include query(400px) {
+          width: 40rem;
+          height: 50rem;
+        }
+      }
+
+      &::after {
+        width: 40rem;
+        left: 0;
+        bottom: 0;
+        height: 35rem;
+        transform: translate(-40%, 73%);
+      }
+
+      & > .top {
+        @include flex(row, flex-start, space-between);
+        .left {
+          @include flex(column, flex-start, flex-start);
+          & > span {
+            &:nth-of-type(1) {
+              color: rgba($color: $light, $alpha: 0.8);
+              @include font(1.6rem, 500);
+            }
+            &:nth-of-type(2) {
+              color: rgba($color: $white, $alpha: 1);
+              @include font(2.5rem, 500);
+            }
+          }
+        }
+        .right {
+          @include flex(column, center, flex-start);
+          & > img {
+            width: 50px;
+          }
+          & > span {
+            @include font(1.1rem);
+            color: rgba($color: $white, $alpha: 1);
+          }
+        }
+      }
+      & > .bottom {
+        @include flex(row, center, space-between);
+        & > span {
+          &:nth-of-type(1) {
+            color: rgba($color: $light, $alpha: 0.7);
+            @include font(1.4rem, 500);
+          }
+          &:nth-of-type(2) {
+            color: rgba($color: $white, $alpha: 1);
+            @include font(1.8rem, 500);
+          }
+        }
+      }
+    }
+
+    & > .bottom {
+      @include flex(row, center, space-between);
+      width: 100%;
+
+      & > .left {
+        @include flex(row, center, flex-start, 0.8rem);
+
+        & > div {
+          @include flex(row, center, flex-start, 0.4rem);
+
+          & > span {
+            @include font(1.1rem);
+            @include center();
+            color: #07002e;
+
+            @include query(400px) {
+              @include font(1rem);
+            }
+          }
+        }
+      }
+
+      & > .right {
+        @include flex(row, stretch, flex-end, 0.5rem);
+        & > button {
+          background-color: transparent;
+          border: none;
+          outline: none;
+          @include font(0.9rem);
+          text-transform: uppercase;
+          cursor: pointer;
+          color: #07002e;
+
+          &:hover {
+            opacity: 0.7;
+          }
+        }
+
+        & > span {
+          display: block;
+          width: 1px;
+          background-color: rgba($color: $black, $alpha: 0.1);
+          margin: 0.2rem 0;
+        }
+      }
+    }
+  }
+}
